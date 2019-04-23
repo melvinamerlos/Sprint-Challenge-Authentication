@@ -23,8 +23,8 @@ module.exports = server => {
 function register(req, res) {
   // implement user registration
   const creds = req.body;
-  const hash = bcrypt.hashSync(password, 14);
-  req.body.password = hash;
+  const hash = bcrypt.hashSync(creds.password, 14);
+  creds.password = hash;
 
   db('users')
     .insert(creds)
